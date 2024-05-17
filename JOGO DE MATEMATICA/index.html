@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOGO DE MATEMATICA BASICA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>JOGO PARA TREINAR MATEMÁTICA BÁSICA</h1>
+    <div class="container">
+        <h2 id="display">2 + 3</h2>
+        <input type="text" id="valor" />
+    </div>
+
+    <script type="text/javascript">
+        function numeroAleatorio() {
+            return Math.floor(Math.random() * 10);
+        }
+
+        let numero1 = numeroAleatorio();
+        let numero2 = numeroAleatorio();
+
+        let display = document.querySelector("#display");
+        display.innerHTML = numero1 + " + " + numero2;
+
+        let input = document.querySelector("#valor");
+
+        input.addEventListener("keyup", (event) => {
+            if (event.keyCode === 13) { // Use the equality operator
+                if (numero1 + numero2 === parseInt(input.value)) {
+                    numero1 = numeroAleatorio();
+                    numero2 = numeroAleatorio();
+                    display.innerHTML = numero1 + " + " + numero2;
+                    input.value = ""; // Clear the input field
+                    alert("Voce Acertou!");
+                } else {
+                    alert("Você errou, o valor correto é: " + (numero1 + numero2));
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
